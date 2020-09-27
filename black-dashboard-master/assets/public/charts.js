@@ -80,7 +80,7 @@ class Charts{
                         easing: 'out',
                         startup: true
                     },
-                    colors: ['#1d3163', '#3274db', '#6da0ed', '#2d4ea1','#375ebf']
+                    colors: pieColorArray
                 };
                 let visualizationData = google.visualization.arrayToDataTable(data, false);
                 let chart = new google.visualization.PieChart(document.getElementById(target));

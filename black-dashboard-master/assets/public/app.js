@@ -88,7 +88,6 @@ function prepareTwoLayerChart(backendData, title, firstParam, secondParam, third
   let firstParamsecondParamData = makeChartDataNocolor(backendData,firstParam,secondParam,10);
   let firstParamthirdParamData = makeChartDataNocolor(backendData,firstParam,thirdParam,10);
   let data = mergeData(firstParamsecondParamData,firstParamthirdParamData);
-  console.log(data,"Merge");
   charts.drawTwoLayerSalesChart(title, data, target, type);
 }
 
