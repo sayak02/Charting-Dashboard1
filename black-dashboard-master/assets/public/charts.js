@@ -32,7 +32,6 @@ class Charts{
 
                     },
                 };
-                console.log(type);
                 let visualizationData = google.visualization.arrayToDataTable(data, false);
                 let chart = new google.visualization.BarChart(document.getElementById(target));
                 chart.draw(visualizationData, options);
@@ -65,7 +64,6 @@ class Charts{
 
                     },
                 };
-                console.log(type);
                 let visualizationData = google.visualization.arrayToDataTable(data, false);
                 let chart = new google.visualization.ColumnChart(document.getElementById(target));
                 chart.draw(visualizationData, options);
@@ -107,7 +105,6 @@ class Charts{
 drawTwoLayerSalesChart(title,data,target,type){
 
     if(data.length>1){
-        console.log(data);
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(()=>{
             if (type === "area") 
