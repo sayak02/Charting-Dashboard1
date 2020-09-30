@@ -63,7 +63,7 @@ function dateInput(data,varName){
 
   // allInputDiv.appendChild(endNameLable);
   allInputDiv.appendChild(endDateInput);
-  console.log(data);
+  // console.log(data);
 
   const highLowDateObj = {
                 'lowDateDbValue': data[0][varName],

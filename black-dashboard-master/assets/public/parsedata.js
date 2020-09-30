@@ -45,22 +45,30 @@ function makeChartData(data, stringParam, numberParam, topAmount, colorArray) {
         let arrayIndex = ((Object.values(percentObj).indexOf(topValueArray[i])));
         topKeyArray.push(Object.keys(percentObj)[arrayIndex]);
     }
+    
 
-
-    // console.log(topValueArray);
-    // console.log(topKeyArray);
-    // console.log(percentObj);
 
     const arrayOfArraysReturn = [];
     arrayOfArraysReturn.push([stringParam, numberParam, { role: "style" }]);
 
-    for (let i = 0; i < topAmount; i++) {
-        arrayOfArraysReturn.push([topKeyArray[i], topValueArray[i], colorArray[i]]);
+    //checking for data length - bug fix 1.0
+    if(data.length === 0){
+        arrayOfArraysReturn.push(['Wrong Combination',0,'#1d3163']);
+        // arrayOfArraysReturn.push(['Wrong Combination',0,'red'])
+        return arrayOfArraysReturn;
+
     }
+    else{
+    
+        for (let i = 0; i < topAmount; i++) {
+            arrayOfArraysReturn.push([topKeyArray[i], topValueArray[i], colorArray[i]]);
+        }
+    
+        // console.log(arrayOfArraysReturn);
+    
+        return arrayOfArraysReturn;
 
-    // console.log(arrayOfArraysReturn);
-
-    return arrayOfArraysReturn;
+    }
 }
 
 
@@ -104,18 +112,23 @@ function makeChartDataNocolor(data, stringParam, numberParam, topAmount) {
     }
 
 
-    // console.log(topValueArray);
-    // console.log(topKeyArray);
-    // console.log(percentObj);
 
     const arrayOfArraysReturn = [];
     arrayOfArraysReturn.push([stringParam, numberParam]);
+    
+    //checking for data length - bug fix 1.0
 
-    for (let i = 0; i < topAmount; i++) {
-        arrayOfArraysReturn.push([topKeyArray[i], topValueArray[i]]);
+    if(data.length === 0){
+        arrayOfArraysReturn.push(['Wrong Combination',100]);
+
+        return arrayOfArraysReturn;
+    }else{
+        for (let i = 0; i < topAmount; i++) {
+            arrayOfArraysReturn.push([topKeyArray[i], topValueArray[i]]);
+        }
+    
+        return arrayOfArraysReturn;
     }
-
-    return arrayOfArraysReturn;
 }
 
 function mergeData(firstData,secondData){

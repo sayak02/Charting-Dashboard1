@@ -67,6 +67,9 @@ button.addEventListener('click',(e)=>{
     })
     .then(backendData => {
 
+      if(backendData.length <1){
+        alert('Wrong Combination');
+      }
 
       prepareOneLayerChart(backendData, '', "Factory", "Sales", "factorySales","bar",firstcolorArray);
       prepareOneLayerChart(backendData, '', "ItemID", "Sales","itemSales","column",firstcolorArray);
@@ -95,9 +98,18 @@ function prepareOneLayerChart(backendData, title, vAxisTitle, hAxisTitle, target
 
   let data;
   if (type === "pie") {
-    data = makeChartDataNocolor(backendData, vAxisTitle, hAxisTitle, 10)
+    data = makeChartDataNocolor(backendData, vAxisTitle, hAxisTitle, 10);
+    
+    //piechart -ve Value clear
+      data.forEach((d)=>{
+        if(typeof(d[1])==="number" && d[1]<0){
+          d[1]=0;
+        }
+      })
+
   }
-  else
+  else{
     data = makeChartData(backendData, vAxisTitle, hAxisTitle, 10, colorArray);
+  }
   charts.drawOneLayerSalesChart(data, title, vAxisTitle, hAxisTitle, target, type);
 }
